@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    s = 'this is it:' + socket.gethostname() 
+    s = 'this is shit:' + socket.gethostname() 
     return s 
 
 if __name__ == '__main__':
