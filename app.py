@@ -1,13 +1,16 @@
 #!/usr/bin/env python
-
 import socket
 import os
+import statsd
+
 from flask import Flask
 app = Flask(__name__)
+c = statsd.StatsClient('localhost', 8125)
 
 @app.route('/')
 def hello_world():
     s = 'Hostname is: ' + socket.gethostname()
+    c.incr('hits')
     return s
 
 MYPORT = int(os.environ.get("PORT0", "0"))
